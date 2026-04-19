@@ -46,6 +46,8 @@ struct Vehiculo {
 // matriz de vehículos 16x16
 Vehiculo parqueadero[16][16];
 
+
+
 void inicializarParqueadero() {
     for(int i = 0; i < 16; i++) {
         for(int j = 0; j < 16; j++) {
@@ -53,6 +55,12 @@ void inicializarParqueadero() {
             parqueadero[i][j].placa = "";
         }
     }
+}
+
+void ocuparEspacio(Vehiculo* v, string placa) {
+    v->ocupado = true;
+    v->placa = placa;
+    v->horaEntrada = time(0);
 }
 
 void ingresarvehiculo() {
@@ -67,11 +75,7 @@ void ingresarvehiculo() {
             if(mapa[i][j] == 'P' && parqueadero[i][j].ocupado == false) {
 
                 mapa[i][j] = 'X'; // marcar ocupado
-
-                parqueadero[i][j].ocupado = true;
-                parqueadero[i][j].placa = placa;
-                parqueadero[i][j].horaEntrada = time(0);
-
+                ocuparEspacio(&parqueadero[i][j], placa);
                 cout << "vehiculo se parqueo en [" << i << "][" << j << "]\n";
                 return;
             }
