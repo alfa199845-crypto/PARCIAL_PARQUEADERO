@@ -31,7 +31,15 @@ char mapa[16][16] = {
 int numeroParqueo[16][16];
 
 
-
+void mostrarFactura(string placa, int numero, double horas, double pago) {
+    cout << "\n===== FACTURA =====\n";
+    cout << "Placa: " << placa << endl;
+    cout << "Parqueadero: #" << numero << endl;
+    cout << "Tiempo: " << horas << " horas\n";
+    cout << "Tarifa: $2000 por hora\n";
+    cout << "Total a pagar: $" << pago << endl;
+    cout << "===================\n";
+}
 
 // funcion q muestra el mapa
 void mostrarmapa() {
@@ -216,8 +224,7 @@ void registrarSalida() {
                 double tarifa = 2000;
                 double pago = horas * tarifa;
 
-                cout << "Tiempo: " << horas << " horas\n";
-                cout << "Total a pagar: $" << pago << endl;
+                mostrarFactura(placa, numeroParqueo[i][j], horas, pago);
 
                 for(int k = 0; k < totalRegistros; k++) {
     if(historial[k].placa == placa && historial[k].activo) {
@@ -248,7 +255,7 @@ void registrarSalida() {
 
 void mostrarHistorial() {
 
-    cout << "\n HISTORIAL \n";
+    cout << "\n===== HISTORIAL =====\n";
 
     for(int i = 0; i < totalRegistros; i++) {
 
