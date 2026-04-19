@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 void   buscarVehiculo();
-
+void mostrarHistorial();
 void mostrarmapa();
 void inicializarParqueadero();
 void ingresarvehiculo();
@@ -20,6 +20,7 @@ int main() {
         cout << "3. vehiculo se retira\n";
         cout << "4. Salir del menu\n";
         cout << "5. Buscar vehiculo\n";
+        cout << "6. Ver historial\n";
         cout << "Opcion: ";
 
         if(!(cin >> opcion)) {
@@ -49,6 +50,10 @@ int main() {
 
                 case 5:
     buscarVehiculo();
+    break;
+
+    case 6:
+    mostrarHistorial();
     break;
 
             default:
