@@ -54,3 +54,29 @@ void inicializarParqueadero() {
         }
     }
 }
+
+void ingresarvehiculo() {
+    string placa;
+    cout << "ingrese la placa: ";
+    cin >> placa;
+
+    for(int i = 0; i < 16; i++) {
+        for(int j = 0; j < 16; j++) {
+
+            //verifica si la posicion de la maitriz es una p osea un parqueadero  y si no esta ocupado
+            if(mapa[i][j] == 'P' && parqueadero[i][j].ocupado == false) {
+
+                mapa[i][j] = 'X'; // marcar ocupado
+
+                parqueadero[i][j].ocupado = true;
+                parqueadero[i][j].placa = placa;
+                parqueadero[i][j].horaEntrada = time(0);
+
+                cout << "vehiculo se parqueo en [" << i << "][" << j << "]\n";
+                return;
+            }
+        }
+    }
+
+    cout << "no hay espacios disponibles\n";
+}
