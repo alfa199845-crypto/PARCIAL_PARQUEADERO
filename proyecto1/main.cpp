@@ -4,16 +4,46 @@ using namespace std;
 void mostrarmapa();
 void inicializarParqueadero();
 void ingresarvehiculo();
+void registrarSalida();
 
 int main() {
 
+    int opcion;
+
     inicializarParqueadero();
-
-    ingresarvehiculo();
-    // Mostrar el mapa
-    mostrarmapa();
-
     
+ do {
+        cout << "\n_rovky parqueadero_\n";
+        cout << "1. Muestra mapa\n";
+        cout << "2. Ingresa el vehiculo\n";
+        cout << "3. vehiculo se retira\n";
+        cout << "4. Salir del menu\n";
+        cout << "Opcion: ";
+        cin >> opcion;
+
+        switch(opcion) {
+
+            case 1:
+                mostrarmapa();
+                break;
+
+            case 2:
+                ingresarvehiculo();
+                break;
+
+            case 3:
+                registrarSalida();
+                break;
+
+            case 4:
+                cout << "Saliendo...\n";
+                break;
+
+            default:
+                cout << "Opcion invalida\n";
+        }
+
+    } while(opcion != 4);
 
     return 0;
 }
