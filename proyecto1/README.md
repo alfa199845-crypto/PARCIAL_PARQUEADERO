@@ -1,7 +1,7 @@
 # Sistema de Parqueadero en C++
 
 ## Descripción
-Este proyecto consiste en la creacion de un sistema de parqueadero en consola, que permite registrar la entrada y salida de vehículos, calcular el tiempo de permanencia y el valor a pagar, así como visualizar el estado del parqueadero en tiempo real.
+Este proyecto consiste en la creacion de un sistema de parqueadero en consola, que permite registrar la entrada y salida de vehículos, calcular el tiempo de permanencia y el valor a pagar, así como visualizar el estado del parqueadero en tiempo real. se genera factura que discrimina conducta del vehiculo.
 
 ---
 
@@ -13,6 +13,7 @@ Este proyecto consiste en la creacion de un sistema de parqueadero en consola, q
 - Visualización de espacios ocupados y disponibles
 - Menú interactivo
 - historial de ingresos y egresos
+- Generar factura
 
 ---
 
