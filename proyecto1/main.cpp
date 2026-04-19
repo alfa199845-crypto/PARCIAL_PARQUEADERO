@@ -19,7 +19,13 @@ int main() {
         cout << "3. vehiculo se retira\n";
         cout << "4. Salir del menu\n";
         cout << "Opcion: ";
-        cin >> opcion;
+
+        if(!(cin >> opcion)) {
+            cin.clear();                
+            cin.ignore(1000, '\n');     
+            cout << "Entrada invalida\n";
+            continue;                   
+        }
 
         switch(opcion) {
 
