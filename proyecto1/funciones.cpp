@@ -4,6 +4,9 @@
 #include <iomanip>
 using namespace std;
 
+int resaltarI = -1;
+int resaltarJ = -1;
+
 // mapa de 16x16
 // e es entrada, s es la salida , p es cada parqueadero y . indcia el camino :3
 char mapa[16][16] = {
@@ -30,14 +33,17 @@ int numeroParqueo[16][16];
 
 
 
-
 // funcion q muestra el mapa
 void mostrarmapa() {
     cout << "\nMAPA PARQUEADERO\n\n";
 
     for(int i = 0; i < 16; i++) {
         for(int j = 0; j < 16; j++) {
-            if(mapa[i][j] == 'P') {
+
+             if(i == resaltarI && j == resaltarJ) {
+            cout << "\033[32m" << setw(4) << numeroParqueo[i][j] << "\033[0m";
+        }
+          else if(mapa[i][j] == 'P') {
     cout << setw(4) << numeroParqueo[i][j];
 }
 else if(mapa[i][j] == 'X') {
@@ -140,6 +146,40 @@ void ingresarvehiculo() {
     cout << "Numero de parqueadero invalido\n";
 }
 
+
+void buscarVehiculo() {
+    string placa;
+    cout << "Ingrese placa a buscar: ";
+    cin >> placa;
+
+    for(int i = 0; i < 16; i++) {
+        for(int j = 0; j < 16; j++) {
+
+            if(parqueadero[i][j].ocupado &&
+               parqueadero[i][j].placa == placa) {
+
+                cout << "Vehiculo en parqueadero #" 
+                     << numeroParqueo[i][j] << endl;
+
+                // activar resaltado
+                resaltarI = i;
+                resaltarJ = j;
+
+                mostrarmapa();
+
+                // desactivar resaltado
+                resaltarI = -1;
+                resaltarJ = -1;
+
+                return;
+            }
+        }
+    }
+
+    cout << "Vehiculo no encontrado\n";
+}
+
+
 void registrarSalida() {
     string placa;
     cout << "Ingrese la placa a retirar: ";
@@ -173,6 +213,10 @@ void registrarSalida() {
             }
         }
     }
+
+
+
+    
 
     cout << "Vehiculo no encontrado\n";
 }
