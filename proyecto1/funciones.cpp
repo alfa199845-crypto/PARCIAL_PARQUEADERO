@@ -80,3 +80,40 @@ void ingresarvehiculo() {
 
     cout << "no hay espacios disponibles\n";
 }
+
+void registrarSalida() {
+    string placa;
+    cout << "Ingrese la placa a retirar: ";
+    cin >> placa;
+
+    for(int i = 0; i < 16; i++) {
+        for(int j = 0; j < 16; j++) {
+
+            if(parqueadero[i][j].ocupado == true &&
+               parqueadero[i][j].placa == placa) {
+
+                // cuanto tiempo esta
+                time_t horaSalida = time(0);
+                double segundos = difftime(horaSalida, parqueadero[i][j].horaEntrada);
+                double horas = segundos / 3600.0;
+
+                // valor a pagar
+                double tarifa = 2000;
+                double pago = horas * tarifa;
+
+                cout << "Tiempo: " << horas << " horas\n";
+                cout << "Total a pagar: $" << pago << endl;
+
+                // libera el espacio que estaba ocupado
+                parqueadero[i][j].ocupado = false;
+                parqueadero[i][j].placa = "";
+                mapa[i][j] = 'P';
+
+                cout << "Vehiculo retirado correctamente\n";
+                return;
+            }
+        }
+    }
+
+    cout << "Vehiculo no encontrado\n";
+}
