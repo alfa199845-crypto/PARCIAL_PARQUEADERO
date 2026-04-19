@@ -57,6 +57,18 @@ else {
     }
 }
 
+struct Registro {
+    string placa;
+    time_t entrada;
+    time_t salida;
+    double pago;
+    bool activo; // true = esta en el parqueadero y  false = ya se fue xd 
+};
+
+
+Registro historial[200];
+int totalRegistros = 0;
+
 // Datos del vehiculo
 struct Vehiculo {
     string placa;
@@ -131,6 +143,10 @@ void ingresarvehiculo() {
 
                     mapa[i][j] = 'X';
                     ocuparEspacio(&parqueadero[i][j], placa);
+                    historial[totalRegistros].placa = placa;
+                   historial[totalRegistros].entrada = time(0);
+                    historial[totalRegistros].activo = true;
+                    totalRegistros++;
 
                     cout << "vehiculo parqueado en puesto #" << numero << endl;
                     return;
@@ -203,6 +219,17 @@ void registrarSalida() {
                 cout << "Tiempo: " << horas << " horas\n";
                 cout << "Total a pagar: $" << pago << endl;
 
+                for(int k = 0; k < totalRegistros; k++) {
+    if(historial[k].placa == placa && historial[k].activo) {
+
+        historial[k].salida = horaSalida;
+        historial[k].pago = pago;
+        historial[k].activo = false;
+
+        break;
+    }
+}
+
                 // libera el espacio que estaba ocupado
                 parqueadero[i][j].ocupado = false;
                 parqueadero[i][j].placa = "";
@@ -215,8 +242,34 @@ void registrarSalida() {
     }
 
 
-
-    
-
     cout << "Vehiculo no encontrado\n";
+}
+
+
+void mostrarHistorial() {
+
+    cout << "\n HISTORIAL \n";
+
+    for(int i = 0; i < totalRegistros; i++) {
+
+        cout << "Placa: " << historial[i].placa << endl;
+
+        cout << "Estado: ";
+        if(historial[i].activo)
+            cout << "EN PARQUEADERO\n";
+        else
+            cout << "SALIO\n";
+
+        double tiempo = difftime(
+            historial[i].activo ? time(0) : historial[i].salida,
+            historial[i].entrada
+        ) / 60.0;
+
+        cout << "Tiempo: " << tiempo << " minutos\n";
+
+        if(!historial[i].activo)
+            cout << "Pago: $" << historial[i].pago << endl;
+
+        cout << "----------------------\n";
+    }
 }
