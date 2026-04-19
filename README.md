@@ -18,6 +18,7 @@ Este proyecto consiste en el desarrollo de un sistema de gestión de parqueadero
 - Resaltado visual en el mapa (color verde)
 - Historial completo de vehículos (entrada, salida, tiempo y pago)
 - Mejora visual del mapa con alineación
+- Generar factura de pago
 
 ---
 
