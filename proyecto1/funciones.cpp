@@ -106,26 +106,38 @@ void ingresarvehiculo() {
     string placa;
     cout << "ingrese la placa: ";
     cin >> placa;
+
     if(placaExiste(placa)) {
-    cout << "Ese vehiculo ya esta en el parqueadero\n";
-    return;
-}
+        cout << "Ese vehiculo ya esta en el parqueadero\n";
+        return;
+    }
+
+    int numero;
+    cout << "Ingrese el numero del parqueadero: ";
+    cin >> numero;
 
     for(int i = 0; i < 16; i++) {
         for(int j = 0; j < 16; j++) {
 
-            //verifica si la posicion de la maitriz es una p osea un parqueadero  y si no esta ocupado
-            if(mapa[i][j] == 'P' && parqueadero[i][j].ocupado == false) {
+            if(numeroParqueo[i][j] == numero) {
 
-                mapa[i][j] = 'X'; // marcar ocupado
-                ocuparEspacio(&parqueadero[i][j], placa);
-                cout << "vehiculo se parqueo en [" << i << "][" << j << "]\n";
-                return;
+                if(parqueadero[i][j].ocupado == false) {
+
+                    mapa[i][j] = 'X';
+                    ocuparEspacio(&parqueadero[i][j], placa);
+
+                    cout << "vehiculo parqueado en puesto #" << numero << endl;
+                    return;
+
+                } else {
+                    cout << "Ese parqueadero ya esta ocupado\n";
+                    return;
+                }
             }
         }
     }
 
-    cout << "no hay espacios disponibles\n";
+    cout << "Numero de parqueadero invalido\n";
 }
 
 void registrarSalida() {
