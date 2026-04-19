@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <ctime>
+#include <iomanip>
 using namespace std;
 
 // mapa de 16x16
@@ -24,13 +25,27 @@ char mapa[16][16] = {
 {'E','.','.','.','.','.','.','.','.','.','.','.','.','.','.','S'}
 };
 
+int numeroParqueo[16][16];
+
+
+
+
+
 // funcion q muestra el mapa
 void mostrarmapa() {
     cout << "\nMAPA PARQUEADERO\n\n";
 
     for(int i = 0; i < 16; i++) {
         for(int j = 0; j < 16; j++) {
-            cout << mapa[i][j] << " ";
+            if(mapa[i][j] == 'P') {
+    cout << setw(4) << numeroParqueo[i][j];
+}
+else if(mapa[i][j] == 'X') {
+    cout << setw(4) << "X";
+}
+else {
+    cout << setw(4) << mapa[i][j];
+}
         }
         cout << endl;
     }
@@ -49,12 +64,24 @@ Vehiculo parqueadero[16][16];
 
 
 void inicializarParqueadero() {
-    for(int i = 0; i < 16; i++) {
-        for(int j = 0; j < 16; j++) {
-            parqueadero[i][j].ocupado = false;
-            parqueadero[i][j].placa = "";
+
+    
+    int contador = 1;
+
+for(int i = 0; i < 16; i++) {
+    for(int j = 0; j < 16; j++) {
+
+        parqueadero[i][j].ocupado = false;
+        parqueadero[i][j].placa = "";
+
+        if(mapa[i][j] == 'P') {
+            numeroParqueo[i][j] = contador;
+            contador++;
+        } else {
+            numeroParqueo[i][j] = 0;
         }
     }
+}
 }
 
 void ocuparEspacio(Vehiculo* v, string placa) {
