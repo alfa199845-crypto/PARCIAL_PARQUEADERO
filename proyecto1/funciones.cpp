@@ -63,10 +63,26 @@ void ocuparEspacio(Vehiculo* v, string placa) {
     v->horaEntrada = time(0);
 }
 
+bool placaExiste(string placa) {
+    for(int i = 0; i < 16; i++) {
+        for(int j = 0; j < 16; j++) {
+            if(parqueadero[i][j].ocupado == true &&
+               parqueadero[i][j].placa == placa) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 void ingresarvehiculo() {
     string placa;
     cout << "ingrese la placa: ";
     cin >> placa;
+    if(placaExiste(placa)) {
+    cout << "Ese vehiculo ya esta en el parqueadero\n";
+    return;
+}
 
     for(int i = 0; i < 16; i++) {
         for(int j = 0; j < 16; j++) {
