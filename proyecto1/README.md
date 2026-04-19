@@ -18,7 +18,7 @@ Este proyecto consiste en la creacion de un sistema de parqueadero en consola, q
 
 ## Innovaciones implementadas
 
-### 🔹 1. Numeración de parqueaderos
+### 1. Numeración de parqueaderos
 Se asignó un número único a cada espacio de parqueo.
 
 **¿Para qué?**  
@@ -121,7 +121,7 @@ Estas herramientas fueron empleadas como guía de aprendizaje, mientras que la i
 
 ---
 
-## 🔗 Referencia
+## Referencia
 
 OpenAI. (2026). *ChatGPT (modelo GPT-5.3)*.
 Herramienta utilizada como apoyo en el desarrollo del proyecto.
