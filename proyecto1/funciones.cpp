@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <ctime>
 using namespace std;
 
 // mapa de 16x16
@@ -34,3 +35,13 @@ void mostrarmapa() {
         cout << endl;
     }
 }
+
+// Datos del vehiculo
+struct Vehiculo {
+    string placa;
+    time_t horaEntrada;
+    bool ocupado;
+};
+
+// matriz de vehículos 16x16
+Vehiculo parqueadero[16][16];
