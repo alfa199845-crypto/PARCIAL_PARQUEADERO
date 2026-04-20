@@ -14,6 +14,7 @@ Este proyecto consiste en la creacion de un sistema de parqueadero en consola, q
 - Menú interactivo
 - historial de ingresos y egresos
 - Generar factura
+- emergencia cerrar puertas, no entran ni salen vehiculos
 
 ---
 
@@ -71,6 +72,16 @@ Se utilizó `setw()` para alinear correctamente los elementos del mapa.
 
 ---
 
+### 8. Factura
+Se utilizó la funcion 'mostrarFactura´ para imprimir resumen de estancia. 
+
+---
+
+### 9. opcion emergencia
+Se bloquean las entradas y las salidas ante una eventualidad tipo emergencia (robo )
+
+---
+
 ## Ejecución del programa
 
 ### Compilación (Windows con MinGW)
@@ -106,6 +117,12 @@ El desarrollo del sistema se basa en funciones propias implementadas en el archi
 
 * `mostrarHistorial()`
   Presenta los registros de entrada y salida, mostrando estado, tiempo de permanencia y pago realizado.
+
+* `mostrarFactura()`
+  informa resumen de estancia de parqueo y valor
+
+* `abrir parqueadero cerrar parqueadero ()`
+   cierra de forma automatica las puertas de  entrada y salidad
 
 ---
 
