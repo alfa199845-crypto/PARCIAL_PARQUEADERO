@@ -19,6 +19,7 @@ Este proyecto consiste en el desarrollo de un sistema de gestión de parqueadero
 - Historial completo de vehículos (entrada, salida, tiempo y pago)
 - Mejora visual del mapa con alineación
 - Generar factura de pago
+- opcion de cerrar y abrir puertas
 
 ---
 
