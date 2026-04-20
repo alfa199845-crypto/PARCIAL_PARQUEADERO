@@ -6,6 +6,7 @@ using namespace std;
 
 int resaltarI = -1;
 int resaltarJ = -1;
+bool parqueaderoAbierto = true;
 
 // mapa de 16x16
 // e es entrada, s es la salida , p es cada parqueadero y . indcia el camino :3
@@ -30,6 +31,16 @@ char mapa[16][16] = {
 
 int numeroParqueo[16][16];
 
+
+void cerrarParqueadero() {
+    parqueaderoAbierto = false;
+    cout << "Parqueadero cerrado\n";
+}
+
+void abrirParqueadero() {
+    parqueaderoAbierto = true;
+    cout << "Parqueadero abierto\n";
+}
 
 void mostrarFactura(string placa, int numero, double horas, double pago) {
     cout << "\n===== FACTURA =====\n";
@@ -56,6 +67,13 @@ void mostrarmapa() {
 }
 else if(mapa[i][j] == 'X') {
     cout << setw(4) << "X";
+}
+else if(mapa[i][j] == 'E' || mapa[i][j] == 'S') {
+    if(!parqueaderoAbierto) {
+        cout << "\033[31m" << setw(4) << mapa[i][j] << "\033[0m";
+    } else {
+        cout << setw(4) << mapa[i][j];
+    }
 }
 else {
     cout << setw(4) << mapa[i][j];
@@ -129,6 +147,11 @@ bool placaExiste(string placa) {
 }
 
 void ingresarvehiculo() {
+
+    if(!parqueaderoAbierto) {
+    cout << "El parqueadero esta cerrado. No se permiten ingresos\n";
+    return;
+}
     string placa;
     cout << "ingrese la placa: ";
     cin >> placa;
@@ -205,6 +228,11 @@ void buscarVehiculo() {
 
 
 void registrarSalida() {
+if(!parqueaderoAbierto) {
+    cout << "El parqueadero esta cerrado. No se permiten salidas\n";
+    return;
+}
+
     string placa;
     cout << "Ingrese la placa a retirar: ";
     cin >> placa;
@@ -248,6 +276,9 @@ void registrarSalida() {
         }
     }
 
+
+
+    
 
     cout << "Vehiculo no encontrado\n";
 }
